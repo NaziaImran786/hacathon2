@@ -2,11 +2,12 @@
 // 'use client'
 
 // import { useEffect, useState } from 'react'
-import { Star, Heart, Facebook, Twitter, Instagram } from 'lucide-react'
+import { Star, Facebook, Twitter, Instagram, ShoppingCart } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Image from "next/image"
 import Link from "next/link"
+import PostCreator from '@/components/comments'
 
 // import { category } from '../../../sanity/schemaTypes/category/category';
 
@@ -53,7 +54,7 @@ export default async function ProductDetails({ searchParams }: {searchParams: Pr
           <div className="flex items-center gap-2 text-sm">
             <Link href="/" className="text-black">Home</Link>
             <span>.</span>
-            <Link href="/pages" className="text-black">Pages</Link>
+            Pages
             <span>.</span>
             <span className="text-[#FB2E86]">Product Details</span>
           </div>
@@ -97,10 +98,17 @@ export default async function ProductDetails({ searchParams }: {searchParams: Pr
               </p>
             </div>
             <div className="flex gap-4">
-              <Button className="bg-[#FB2E86] hover:bg-[#FB2E86]/90">Add To Cart</Button>
+            <Link href={`/cart?name=${name}&price=${price}&image=${imageUrl}&description=${description}`}>
+                <Button className="h-12 bg-[#FB2E86] hover:bg-[#fb2e87db] px-8" size="lg">
+                  <ShoppingCart className="mr-2 h-5 w-5" />
+                  Add To Cart
+                </Button>
+              </Link>
+              
+              {/* <Button className="bg-[#FB2E86] hover:bg-[#FB2E86]/90">Add To Cart</Button>
               <Button variant="outline" size="icon">
                 <Heart className="h-4 w-4" />
-              </Button>
+              </Button> */}
             </div>
             <div className="space-y-4">
               <div className="flex items-center gap-2">
@@ -146,7 +154,11 @@ export default async function ProductDetails({ searchParams }: {searchParams: Pr
               Additional information content
             </TabsContent>
             <TabsContent value="reviews" className="mt-8">
-              Reviews content
+              {/* comments */}
+            <div className='container mx-auto px-2 lg:px-12 py-12'>
+               <PostCreator blog_id={name} />
+            </div>
+
             </TabsContent>
             <TabsContent value="video" className="mt-8">
               Video content

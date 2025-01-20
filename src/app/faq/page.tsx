@@ -23,7 +23,7 @@ export default function FAQ() {
           <div className="flex gap-2 text-sm">
             <Link href="/" className="text-black">Home</Link>
             <span>.</span>
-            <Link href="/pages" className="text-black">Pages</Link>
+            Pages
             <span>.</span>
             <span className="text-[#FB2E86]">FAQ</span>
           </div>

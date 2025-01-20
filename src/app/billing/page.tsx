@@ -90,7 +90,7 @@ export default function CheckoutPage() {
 
                 <Button className="mt-8 bg-[#FB2E86] hover:bg-[#FB2E86]/90">
                   <Link
-                    href="/completed"
+                    href="/shipment"
                     className="w-full h-full flex items-center justify-center"
                   >
                     Continue Shipping
