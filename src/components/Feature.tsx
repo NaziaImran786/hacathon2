@@ -10,7 +10,8 @@ import { client } from "@/sanity/lib/client";
 
 interface Product {
   imageUrl: string ;
-  title: string;
+  id: number;
+  name: string;
   description: string;
   price: number;
   discountPercentage: number;
@@ -21,22 +22,29 @@ interface Product {
 
 async function ProductCard () {
 
-  const res: Product[] = await client.fetch(`*[_type == "card"] {
-  title,
-  description,
-  price,
-  discountPercentage,
-  priceWithoutDiscount, 
-  "ratingCount": ratingCount,  
-  "imageUrl": image.asset->url
-
+  const res: Product[] = await client.fetch(`*[_type == "product"]{
+    id,
+    name,
+    "imageUrl": image.asset->url,
+    price,
+    description,
+    discountPercentage,
+    isFeaturedProduct,
+    stockLevel,
+    category,
+    _createdAt,
+    _updatedAt
   }`)
+
+
+  // Filter objects with id 1, 2, 3, and 4
+  const resData = res.filter((item) => [1, 2, 3, 4].includes(item.id));
 
   return (
     <>
-      {res.slice(0, 4).map((item: Product, index: number) => {
+      {resData.map((item: Product, index: number) => {
         return (
-          <Link href={`/product/${item.title}?imageUrl=${item.imageUrl}&title=${item.title}&description=${item.description}&price=${item.price}&discountPercentage=${item.discountPercentage}&priceWithoutDiscount=${item.priceWithoutDiscount}&ratingCount=${item.ratingCount}`} key={index}>
+          <Link href={`/product/${item.id}?id=${item.id}&imageUrl=${item.imageUrl}&name=${item.name}&description=${item.description}&price=${item.price}&discountPercentage=${item.discountPercentage}&priceWithoutDiscount=${item.priceWithoutDiscount}&ratingCount=${item.ratingCount}`} key={index}>
           <Card
             className="relative w-[250px] h-[361px] bg-white shadow-lg hover:bg-[#2F1AC4]"
             key={index}
@@ -54,17 +62,17 @@ async function ProductCard () {
 
             {/* Product Name */}
             <div className="absolute top-[69.53%] left-[20.3%] right-[22.04%] text-[#FB2E86] font-lato font-bold text-[18px] text-center">
-              {item.title}
+              {item.name}
             </div>
 
             {/* Color Options */}
-            {/* {item.discountPercentage || (
+            {item.discountPercentage && (
               <div className="absolute top-[78.95%] left-[40.74%] flex space-x-2">
                 <div className="w-[14px] h-2  bg-[#05E6B7]"></div>
                 <div className="w-[14px] h-2  bg-[#F701A8]"></div>
                 <div className="w-[14px] h-2  bg-[#00009D]"></div>
               </div>
-            )} */}
+            )}
 
             {/* Product Code */}
             {/* <div className="absolute top-[83.38%] left-[22.07%] right-[22.26%] text-[#151875] font-josefin text-sm text-center">

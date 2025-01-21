@@ -12,8 +12,40 @@ import {
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Grid2X2, Heart, List, Search, ShoppingCart } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { client } from "@/sanity/lib/client";
 
-export default function Productgrid() {
+
+interface Product {
+  id: number
+  name: string
+  imageUrl: string
+  price: number
+  description: string
+  discountPercentage: number
+  isFeaturedProduct: boolean
+  stockLevel: number
+  category: string
+  _createdAt: string
+  _updatedAt: string
+}
+export default async function Productgrid() {
+   const res: Product[] = await client.fetch(`*[_type == "product"]{
+    id,
+    name,
+    "imageUrl": image.asset->url,
+    price,
+    description,
+    discountPercentage,
+    isFeaturedProduct,
+    stockLevel,
+    category,
+    _createdAt,
+    _updatedAt
+  }`)
+
+   // Filter objects with id 1, 2, 3, and 4
+   const resData = res.filter((item) => [19, 20, 21, 22,23,24,24,26,27,28,29,30].includes(item.id));
+
   return (
     <section className="min-h-screen">
       <div className="bg-[#F6F5FF] py-16 lg:py-24">
@@ -87,13 +119,13 @@ export default function Productgrid() {
 
       <div className="container mx-auto px-4 mb-[125px]  ">
         <div className="mx-auto grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((comment, index) => (
-          <Link href={`/shopgrid/${comment}`} key={index}>
+        {resData.map((item, index) => (
+          <Link href={`/product/productdetail?id=${item.id}&name=${item.name}&price=${item.price}&imageUrl=${item.imageUrl}&description=${item.description}&descount=${item.discountPercentage}&stock=${item.stockLevel}&category=${item.category}`} key={index}>
           <Card className="group relative w-[250px]">
             {/* Product Image Container */}
             <div className="relative aspect-[270/280] bg-[#F6F7FB] mb-5">
               <Image
-                src={`/g${comment + 0}.png`}
+                src={item.imageUrl}
                 alt="Modern chair"
                 fill
                 className="object-contain p-8"
@@ -115,7 +147,7 @@ export default function Productgrid() {
             {/* Product Info */}
             <div className="text-center">
               <h3 className="text-lg font-bold text-[#151875] mb-2">
-                Vel elit euismod
+                {item.name}
               </h3>
 
               {/* Color Options */}
@@ -127,8 +159,8 @@ export default function Productgrid() {
 
               {/* Prices */}
               <div className="flex justify-center gap-3 text-sm">
-                <span className="text-[#151875]">$26.00</span>
-                <span className="text-[#FB2E86] line-through">$42.00</span>
+                <span className="text-[#151875]">${item.price}</span>
+                <span className="text-[#FB2E86] line-through">$15%</span>
               </div>
             </div>
           </Card>

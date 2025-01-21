@@ -8,9 +8,9 @@ import Link from "next/link"
 import PostCreator from '@/components/comments'
 
 
-export default async function ProductDetails({ searchParams }: {searchParams: Promise<{imageUrl: string ,  category: string , name: string, _id: number, price: number, description: string, discountPercentage: number, stokeLevel: number }>}) {
+export default async function ProductDetails({ searchParams }: {searchParams: Promise<{imageUrl: string ,  category: string , name: string, id: number, price: number, description: string, discountPercentage: number, stokeLevel: number }>}) {
 
-  const { imageUrl, category, _id, name,  price, description, discountPercentage, stokeLevel } = await searchParams
+  const { imageUrl, category, id, name,  price, description, discountPercentage, stokeLevel } = await searchParams
 
     return (
     <div className="h-auto mb-[-140px] bg-white">
@@ -119,7 +119,7 @@ export default async function ProductDetails({ searchParams }: {searchParams: Pr
             <TabsContent value="reviews" className="mt-8">
               {/* comments */}
             <div className='container mx-auto px-2 lg:px-12 py-12'>
-               <PostCreator blog_id={_id}/>
+               <PostCreator blog_id={id}/>
             </div>
 
             </TabsContent>

@@ -12,6 +12,12 @@ export default {
         // validation: (Rule) => Rule.required().error('Name is required'),
       },
       {
+        name: 'id',
+        type: 'number',
+        title: 'Id',
+        // validation: (Rule) => Rule.required().error('Name is required'),
+      },      
+      {
         name: 'image',
         type: 'image',
         title: 'Image',
@@ -59,6 +65,7 @@ export default {
           list: [
             { title: 'Chair', value: 'Chair' },
             { title: 'Sofa', value: 'Sofa' },
+            { title: 'Accessory', value: 'Accessory' }
           ],
         },
         // validation: (Rule) => Rule.required().error('Category is required'),
