@@ -1,7 +1,7 @@
 // src/app/product/[productdetail]/page.tsx
-// 'use client'
 
-// import { useEffect, useState } from 'react'
+
+
 import { Star, Facebook, Twitter, Instagram, ShoppingCart } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -9,43 +9,11 @@ import Image from "next/image"
 import Link from "next/link"
 import PostCreator from '@/components/comments'
 
-// import { category } from '../../../sanity/schemaTypes/category/category';
-
-// Define interface for the params prop
-// interface ProductDetailsProps {
-//   params: {
-//     productdetail: string // Changed to string as URL params are always strings
-//   }
-// }
-
 export default async function ProductDetails({ searchParams }: {searchParams: Promise<{imageUrl: string ,  category: string , name: string, _id: number, price: number, description: string, discountPercentage: number, stokeLevel: number }>}) {
 
-  const { imageUrl, category, name,  price, description, discountPercentage, stokeLevel } = await searchParams
+  const { imageUrl, category, _id, name,  price, description, discountPercentage, stokeLevel } = await searchParams
 
-  // State for managing the product image from URL parameter
-  // const [paramImage, setParamImage] = useState<number>(1) // Default to 1 instead of 0
-
-  // State for managing the selected thumbnail image
-  // const [selectedImage, setSelectedImage] = useState(0)
-  
-  // Array of thumbnail images
-  // const images = [
-  //   "/placeholder/d1.png?height=487&width=375",
-  //   "/placeholder/d2.png?height=155&width=151",
-  //   "/placeholder/d3.png?height=155&width=151",
-  //   "/placeholder/d4.png?height=155&width=151"
-  // ]
-
-  // useEffect(() => {
-  //   // Parse the URL parameter to a number
-  //   const productId = parseInt(params.productdetail, 10)
-  //   // Only update if it's a valid number
-  //   if (!isNaN(productId)) {
-  //     setParamImage(productId)
-  //   }
-  // }, [params.productdetail]) // Dependency array includes params.productdetail
-
-  return (
+    return (
     <div className="h-auto mb-[-140px] bg-white">
       {/* Header Section */}
       <div className="bg-[#F6F5FF] py-16">
@@ -103,12 +71,8 @@ export default async function ProductDetails({ searchParams }: {searchParams: Pr
                   <ShoppingCart className="mr-2 h-5 w-5" />
                   Add To Cart
                 </Button>
-              </Link>
-              
-              {/* <Button className="bg-[#FB2E86] hover:bg-[#FB2E86]/90">Add To Cart</Button>
-              <Button variant="outline" size="icon">
-                <Heart className="h-4 w-4" />
-              </Button> */}
+              </Link>           
+             
             </div>
             <div className="space-y-4">
               <div className="flex items-center gap-2">
@@ -156,7 +120,7 @@ export default async function ProductDetails({ searchParams }: {searchParams: Pr
             <TabsContent value="reviews" className="mt-8">
               {/* comments */}
             <div className='container mx-auto px-2 lg:px-12 py-12'>
-               <PostCreator blog_id={name} />
+               <PostCreator blog_id={_id}/>
             </div>
 
             </TabsContent>
@@ -165,39 +129,6 @@ export default async function ProductDetails({ searchParams }: {searchParams: Pr
             </TabsContent>
           </Tabs>
         </div>
-
-        {/* Related Products */}
-        {/* <div className="mt-16">
-          <h2 className="text-4xl font-bold text-[#101750] mb-8">Related Products</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { title: "Mens Fashion Wear", price: "$43.00" },
-              { title: "Women's Fashion", price: "$67.00" },
-              { title: "Wolx Dummy Fashion", price: "$67.00" },
-              { title: "Top Wall Digital Clock", price: "$51.00" }
-            ].map((product, index) => (
-              <div key={index} className="group">
-                <div className="aspect-square relative mb-4 bg-[#F6F7FB] rounded-lg overflow-hidden">
-                  <Image
-                    src={`/placeholder/d${index + 5}.png`}
-                    alt={product.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform"
-                  />
-                </div>
-                <h3 className="font-semibold text-[#151875]">{product.title}</h3>
-                <div className="flex items-center justify-between mt-2">
-                  <span className="text-[#151875]">{product.price}</span>
-                  <div className="flex">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-[#FFC416] text-[#FFC416]" />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div> */}
       </div>
     </div>
   )

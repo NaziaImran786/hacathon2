@@ -122,7 +122,6 @@ async function Page () {
   _createdAt,
   _updatedAt
 }`)
-
   return (
     <main className="mt-10 overflow-hidden">
       <FilterSection

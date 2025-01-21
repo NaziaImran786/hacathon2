@@ -15,8 +15,6 @@ import Trending from "@/components/Trending";
 export default async function Home() {
 
 // await importData()
-  
-//   await fetchData()
   return (
     <>    
     <Hero/>
@@ -32,7 +30,5 @@ export default async function Home() {
    );
  }
 
-// function fetchData() {
-//   throw new Error("Function not implemented.");
-// }
+
 

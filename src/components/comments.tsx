@@ -9,15 +9,13 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { X } from 'lucide-react'
 import { createComment, deleteComment, myFetch, updateComment } from '@/services/create'
-import { Toaster, toast } from 'sonner'
-
-
+import { Toaster, toast } from 'sonner';
 import ReviewCard from './ReviewCard'
 
 
 export interface Comment { _id: string,  name: string; email: string; message: string, paramsId: number}
 
-export default function PostCreator({ blog_id }: { blogname: string, blog_id: number }) {
+export default function PostCreator({ blog_id }: { blog_id: number }) {
 
 
   const [name, SetName] = useState("")
@@ -29,11 +27,11 @@ export default function PostCreator({ blog_id }: { blogname: string, blog_id: nu
 
 // ------------------------------------------------create 
 const postComment = async () => {
-  const cardFound = cmtArray.find((comment) => comment.name === findCard?.name);
+  const cardFound = cmtArray.find((comment) => comment._id === findCard?._id);
 
   if (cardFound) {
-    const UpdatedComment = { name, email, message, paramsId: String(blog_id) };
-    const res = await updateComment(cardFound.name, UpdatedComment)
+    const UpdatedComment = { name, email, message, paramsId: Number(blog_id) };
+    const res = await updateComment(cardFound._id, UpdatedComment)
     setCmtArray(res);
     SetName('');
     SetEmail('');
