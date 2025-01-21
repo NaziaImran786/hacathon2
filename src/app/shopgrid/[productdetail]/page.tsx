@@ -91,9 +91,11 @@ export default function ProductDetails({ params }: { params: Promise<{ productde
               </p>
             </div>
             <div className="flex gap-4">
+              <Link href="/cart">
               <Button className="bg-[#FB2E86] hover:bg-[#FB2E86]/90" onClick={addToCart}>
                 Add To Cart
               </Button>
+              </Link>
             </div>
           </div>
         </div>

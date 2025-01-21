@@ -1,13 +1,12 @@
 // src/app/product/[productdetail]/page.tsx
 
-
-
 import { Star, Facebook, Twitter, Instagram, ShoppingCart } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Image from "next/image"
 import Link from "next/link"
 import PostCreator from '@/components/comments'
+
 
 export default async function ProductDetails({ searchParams }: {searchParams: Promise<{imageUrl: string ,  category: string , name: string, _id: number, price: number, description: string, discountPercentage: number, stokeLevel: number }>}) {
 
