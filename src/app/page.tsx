@@ -1,6 +1,6 @@
 //src\app\page.tsx
 
-// import {importData} from "@/services/api";
+
 import Category from "@/components/Category";
 import CategoryImg from "@/components/CategoryImg";
 import Discount from "@/components/Discount";
@@ -12,7 +12,7 @@ import Trending from "@/components/Trending";
 
 
 
-export default async function Home() {
+export default function Home() {
 
 // await importData()
   return (

@@ -1,7 +1,6 @@
 // src\components\Feature.tsx
 import Link from "next/link";
 import Image from "next/image";
-// import { FeatureCard } from "@/constant/featurecard";
 import React from "react";
 import { Card } from "./ui/card";
 import { client } from "@/sanity/lib/client";

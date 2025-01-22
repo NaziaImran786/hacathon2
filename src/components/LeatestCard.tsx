@@ -75,12 +75,7 @@ async function LeatestCard () {
             {/* Bottom border line */}
             <div className="absolute left-0 right-[57.3%] top-[99.69%] bottom-[0.31%] border-2 border-[#EEEFFB]"></div>
             
-            {/* Sale Badge */}            
-            {/* {item.badge && (
-              <div className="absolute left-[45px] top-[50.71px] bg-[#3F509E] text-[#EEEFFB] text-[14px] leading-[16px] rotate-[-18.12deg] px-2">
-                {item.badge}
-              </div>              
-            )} */}
+           
            </div>
           </Card>
           </Link>

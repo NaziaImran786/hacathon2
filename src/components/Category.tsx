@@ -1,6 +1,5 @@
 //src\components\Category.tsx
 import React from "react";
-import { CategoryCards } from "@/constant/categorycard";
 import CategoryCard from "./CategoryCard";
 
 function Category() {
@@ -17,7 +16,7 @@ function Category() {
         {/* Card Grid */}
         <div className="container mx-auto px-4">
           <div className="mx-auto grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 justify-items-center">
-            <CategoryCard loop={CategoryCards} />
+            <CategoryCard  />
           </div>
         </div>
       </section>

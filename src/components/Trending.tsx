@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import TrendingCard from "./TrendingCard";
-import { TrendingCards } from "@/constant/trendingcard";
+
 
 export default function Trending() {
   return (
@@ -17,7 +17,7 @@ export default function Trending() {
       {/* Card Grid */}
       <div className="container w-full mx-auto mb-[53px]">
         <div className="mx-auto grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 justify-items-center">
-          <TrendingCard loop={TrendingCards} />
+          <TrendingCard  />
         </div>
       </div>
 

@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 interface Iproduct {
   name: string;
@@ -46,6 +46,7 @@ export default function ShoppingCart() {
   }, [searchParam, router]);
 
   function handleRemoveItem(index: number) {
+
     const removeCard = [...cartItem];
     removeCard.splice(index, 1);
 
@@ -62,6 +63,7 @@ export default function ShoppingCart() {
   }
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <div className="w-full mx-auto px-4 ">
       {/* Page Header */}
       <div className="bg-[#F6F5FF] py-16">
@@ -239,6 +241,7 @@ export default function ShoppingCart() {
         </div>
       </div>
     </div>
+    </Suspense>
   );
 }
 

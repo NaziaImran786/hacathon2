@@ -2,7 +2,6 @@
 import React from 'react';
 import Image from 'next/image';
 import ProductCard from './Feature';
-// import { featureCards } from '@/constant/featurecard';
 
 function FeatureSection() {
   return (

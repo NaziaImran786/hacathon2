@@ -78,7 +78,7 @@ export default function CheckoutPage() {
                     <Label htmlFor="country">Country</Label>
                     <Input
                       id="country"
-                      defaultValue="Bangladesh"
+                      defaultValue="Pakistan"
                       className="mt-2 bg-slate-100"
                     />
                   </div>

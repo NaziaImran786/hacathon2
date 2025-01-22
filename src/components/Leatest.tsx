@@ -1,7 +1,7 @@
 // src\components\Leatest.tsx
 import React from "react";
 import LeatestCard from "./LeatestCard";
-// import { leatestCards } from "@/constant/leatestcard";
+
 
 function LeatestProduct() {
   return (
