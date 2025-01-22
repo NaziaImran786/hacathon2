@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 import Image from "next/image";
 import { Heart, Trash2, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -16,7 +16,7 @@ interface Iproduct {
   quantity: number;
 }
 
-export default function ShoppingCart() {
+function ShoppingCart() {
   const router = useRouter();
   const searchParam = useSearchParams();
   const [cartItem, setCartItem] = useState<Iproduct[]>([]);
@@ -63,8 +63,7 @@ export default function ShoppingCart() {
   }
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-    <div className="w-full mx-auto px-4 ">
+      <div className="w-full mx-auto px-4 ">
       {/* Page Header */}
       <div className="bg-[#F6F5FF] py-16">
         <div className="container mx-auto px-4">
@@ -73,8 +72,8 @@ export default function ShoppingCart() {
             <Link href="/" className="text-black">
               Home
             </Link>
-            <span>.</span>            
-              Pages            
+            <span>.</span>
+              Pages
             <span>.</span>
             <span className="text-[#FB2E86]">CART</span>
           </div>
@@ -189,7 +188,7 @@ export default function ShoppingCart() {
                     <ChevronRight className="w-4 h-4" />
                   </Button>
                 </div>
-              </div>              
+              </div>
             </div>
           </div>
 
@@ -241,7 +240,14 @@ export default function ShoppingCart() {
         </div>
       </div>
     </div>
-    </Suspense>
+
   );
 }
 
+export default function Cart() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ShoppingCart />
+    </Suspense>
+  );
+}
